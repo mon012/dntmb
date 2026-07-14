@@ -1,0 +1,195 @@
+:root {
+  --page-background: #ffffff;
+  --ink: #030303;
+  --muted-ink: #171717;
+  --page-gutter: clamp(1.5rem, 18vw, 24rem);
+  --content-width: min(72rem, calc(100vw - var(--page-gutter) - 1.5rem));
+  --brand-size: clamp(4.25rem, 12.2vw, 10.8rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--page-background);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--page-background);
+  color: var(--ink);
+  font-family:
+    Helvetica,
+    Helvetica Neue,
+    Arial,
+    sans-serif;
+  text-rendering: geometricPrecision;
+}
+
+a {
+  color: inherit;
+}
+
+.page-shell {
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  padding: clamp(2rem, 8vw, 6rem) 0;
+}
+
+.intro {
+  width: var(--content-width);
+  margin-left: var(--page-gutter);
+  transform: translateY(4vh);
+}
+
+.brand-row {
+  width: max-content;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  gap: clamp(0.8rem, 1.6vw, 1.5rem);
+}
+
+.profile-video {
+  width: calc(var(--brand-size) * 0.78);
+  height: calc(var(--brand-size) * 0.78);
+  flex: 0 0 auto;
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--ink);
+}
+
+.brand {
+  margin: 0;
+  font-size: var(--brand-size);
+  line-height: 0.78;
+  letter-spacing: 0;
+  font-weight: 900;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.tagline {
+  margin: clamp(1.1rem, 1.9vw, 1.55rem) 0 0;
+  color: var(--ink);
+  font-size: clamp(2rem, 4.6vw, 4.3rem);
+  line-height: 1.03;
+  letter-spacing: 0;
+  font-weight: 900;
+}
+
+.interests {
+  max-width: 62rem;
+  margin: clamp(2.45rem, 5.4vw, 4.7rem) 0 0;
+  color: var(--muted-ink);
+  font-size: clamp(1.15rem, 2.05vw, 2.1rem);
+  line-height: 1.35;
+  letter-spacing: 0;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.interests span + span::before {
+  content: "•";
+  margin-inline: 0.32em 0.4em;
+}
+
+.facebook-link {
+  width: clamp(3.35rem, 5.2vw, 4.8rem);
+  height: clamp(3.35rem, 5.2vw, 4.8rem);
+  display: inline-grid;
+  place-items: center;
+  margin-top: clamp(2rem, 4.6vw, 4rem);
+  padding: 0.88rem 1.25rem 0.92rem;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--page-background);
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.facebook-link:hover,
+.facebook-link:focus-visible {
+  background: var(--page-background);
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+
+.facebook-link:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 4px;
+}
+
+.facebook-mark {
+  display: inline-grid;
+  place-items: center;
+  font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
+  font-size: clamp(1.55rem, 2.5vw, 2.25rem);
+  font-weight: 950;
+  line-height: 1;
+  text-transform: lowercase;
+}
+
+@media (max-width: 760px) {
+  :root {
+    --content-width: min(100vw - 3rem, 34rem);
+    --page-gutter: auto;
+    --brand-size: clamp(3.1rem, 16vw, 6rem);
+  }
+
+  .page-shell {
+    align-items: end;
+    padding-block: 6rem 4rem;
+  }
+
+  .intro {
+    margin-inline: auto;
+    transform: none;
+  }
+
+  .brand-row {
+    gap: clamp(0.55rem, 2.7vw, 1rem);
+  }
+
+  .tagline {
+    max-width: 11ch;
+  }
+
+  .interests {
+    max-width: 100%;
+    font-size: clamp(0.92rem, 3.8vw, 1.2rem);
+  }
+}
+
+@media (max-width: 430px) {
+  .page-shell {
+    padding-block: 5rem 2rem;
+  }
+
+  .brand {
+    --brand-size: clamp(2.85rem, 15vw, 4.65rem);
+  }
+
+  .tagline {
+    font-size: clamp(1.65rem, 9vw, 2.45rem);
+  }
+
+  .interests {
+    font-size: clamp(0.78rem, 3.6vw, 0.98rem);
+  }
+
+  .facebook-link {
+    width: 3.35rem;
+    height: 3.35rem;
+    padding: 0;
+  }
+}
