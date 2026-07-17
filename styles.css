@@ -5,6 +5,7 @@
   --page-gutter: clamp(1.5rem, 18vw, 24rem);
   --content-width: min(72rem, calc(100vw - var(--page-gutter) - 1.5rem));
   --brand-size: clamp(4.25rem, 12.2vw, 10.8rem);
+  --profile-size: calc(var(--brand-size) * 0.88);
 }
 
 * {
@@ -51,12 +52,12 @@ a {
   max-width: 100%;
   display: flex;
   align-items: center;
-  gap: clamp(0.8rem, 1.6vw, 1.5rem);
+  gap: clamp(0.72rem, 1.35vw, 1.35rem);
 }
 
 .profile-video {
-  width: calc(var(--brand-size) * 0.78);
-  height: calc(var(--brand-size) * 0.78);
+  width: var(--profile-size);
+  height: var(--profile-size);
   flex: 0 0 auto;
   display: block;
   border-radius: 50%;
@@ -85,9 +86,9 @@ a {
 
 .interests {
   max-width: 62rem;
-  margin: clamp(2.45rem, 5.4vw, 4.7rem) 0 0;
+  margin: clamp(2.15rem, 4.7vw, 4.25rem) 0 0;
   color: var(--muted-ink);
-  font-size: clamp(1.15rem, 2.05vw, 2.1rem);
+  font-size: clamp(1.18rem, 1.72vw, 1.85rem);
   line-height: 1.35;
   letter-spacing: 0;
   font-weight: 400;
@@ -96,7 +97,12 @@ a {
 
 .interests span + span::before {
   content: "•";
-  margin-inline: 0.32em 0.4em;
+  margin-inline: 0.34em 0.42em;
+}
+
+.social-stamp {
+  width: max-content;
+  margin-top: clamp(1.85rem, 4.2vw, 3.7rem);
 }
 
 .facebook-link {
@@ -104,8 +110,7 @@ a {
   height: clamp(3.35rem, 5.2vw, 4.8rem);
   display: inline-grid;
   place-items: center;
-  margin-top: clamp(2rem, 4.6vw, 4rem);
-  padding: 0.88rem 1.25rem 0.92rem;
+  padding: 0;
   border: 2px solid var(--ink);
   border-radius: 50%;
   background: var(--ink);
@@ -141,9 +146,10 @@ a {
 
 @media (max-width: 760px) {
   :root {
-    --content-width: min(100vw - 3rem, 34rem);
+    --content-width: min(100vw - 2rem, 34rem);
     --page-gutter: auto;
     --brand-size: clamp(3.1rem, 16vw, 6rem);
+    --profile-size: calc(var(--brand-size) * 0.86);
   }
 
   .page-shell {
@@ -166,7 +172,7 @@ a {
 
   .interests {
     max-width: 100%;
-    font-size: clamp(0.92rem, 3.8vw, 1.2rem);
+    font-size: clamp(0.88rem, 3.72vw, 1.16rem);
   }
 }
 
@@ -176,7 +182,7 @@ a {
   }
 
   .brand {
-    --brand-size: clamp(2.85rem, 15vw, 4.65rem);
+    --brand-size: clamp(2.72rem, 14.2vw, 4.65rem);
   }
 
   .tagline {
@@ -184,7 +190,7 @@ a {
   }
 
   .interests {
-    font-size: clamp(0.78rem, 3.6vw, 0.98rem);
+    font-size: clamp(0.84rem, 3.95vw, 0.98rem);
   }
 
   .facebook-link {
