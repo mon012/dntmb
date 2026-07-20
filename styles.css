@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Geist";
+  src: url("assets/fonts/Geist-Variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 :root {
   --page-background: #ffffff;
   --ink: #030303;
@@ -22,11 +30,8 @@ body {
   margin: 0;
   background: var(--page-background);
   color: var(--ink);
-  font-family:
-    Helvetica,
-    Helvetica Neue,
-    Arial,
-    sans-serif;
+  font-family: "Geist", Helvetica, Arial, sans-serif;
+  font-optical-sizing: auto;
   text-rendering: geometricPrecision;
 }
 
@@ -69,7 +74,7 @@ a {
   margin: 0;
   font-size: var(--brand-size);
   line-height: 0.78;
-  letter-spacing: 0;
+  letter-spacing: -0.045em;
   font-weight: 900;
   color: var(--ink);
   white-space: nowrap;
@@ -80,8 +85,8 @@ a {
   color: var(--ink);
   font-size: clamp(2rem, 4.6vw, 4.3rem);
   line-height: 1.03;
-  letter-spacing: 0;
-  font-weight: 900;
+  letter-spacing: -0.04em;
+  font-weight: 800;
 }
 
 .interests {
@@ -90,7 +95,7 @@ a {
   color: var(--muted-ink);
   font-size: clamp(1.18rem, 1.72vw, 1.85rem);
   line-height: 1.35;
-  letter-spacing: 0;
+  letter-spacing: -0.015em;
   font-weight: 400;
   white-space: nowrap;
 }
@@ -106,13 +111,14 @@ a {
 }
 
 .facebook-link {
-  width: clamp(3.35rem, 5.2vw, 4.8rem);
+  width: clamp(9rem, 12vw, 11rem);
   height: clamp(3.35rem, 5.2vw, 4.8rem);
   display: inline-grid;
   place-items: center;
-  padding: 0;
+  overflow: hidden;
+  padding-inline: 1.4rem;
   border: 2px solid var(--ink);
-  border-radius: 50%;
+  border-radius: 999px;
   background: var(--ink);
   color: var(--page-background);
   text-decoration: none;
@@ -134,14 +140,43 @@ a {
   outline-offset: 4px;
 }
 
-.facebook-mark {
-  display: inline-grid;
+.facebook-label {
+  display: grid;
   place-items: center;
-  font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
-  font-size: clamp(1.55rem, 2.5vw, 2.25rem);
-  font-weight: 950;
+  font-family: "Geist", Helvetica, Arial, sans-serif;
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  font-weight: 700;
   line-height: 1;
-  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+.facebook-label span {
+  grid-area: 1 / 1;
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+.facebook-label-default {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.facebook-label-hover {
+  opacity: 0;
+  transform: translateY(135%);
+}
+
+.facebook-link:hover .facebook-label-default,
+.facebook-link:focus-visible .facebook-label-default {
+  opacity: 0;
+  transform: translateY(-135%);
+}
+
+.facebook-link:hover .facebook-label-hover,
+.facebook-link:focus-visible .facebook-label-hover {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (max-width: 760px) {
@@ -153,8 +188,8 @@ a {
   }
 
   .page-shell {
-    align-items: end;
-    padding-block: 6rem 4rem;
+    align-items: center;
+    padding-block: clamp(3rem, 8vh, 5rem);
   }
 
   .intro {
@@ -167,7 +202,7 @@ a {
   }
 
   .tagline {
-    max-width: 11ch;
+    max-width: 100%;
   }
 
   .interests {
@@ -178,7 +213,7 @@ a {
 
 @media (max-width: 430px) {
   .page-shell {
-    padding-block: 5rem 2rem;
+    padding-block: clamp(2rem, 7vh, 3.5rem);
   }
 
   .brand {
@@ -194,8 +229,8 @@ a {
   }
 
   .facebook-link {
-    width: 3.35rem;
+    width: 9rem;
     height: 3.35rem;
-    padding: 0;
+    padding-inline: 1.25rem;
   }
 }
